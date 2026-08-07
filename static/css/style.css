@@ -1,0 +1,285 @@
+/* ============================================================
+   AI-Powered Automatic Attendance System
+   static/css/style.css
+   Custom styling layered on top of Bootstrap 5.
+   ============================================================ */
+
+:root {
+    --primary: #4361ee;
+    --primary-dark: #3a56d4;
+    --sidebar-width: 260px;
+    --navbar-height: 64px;
+    --bg-light: #f4f6fb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-light);
+    font-family: "Segoe UI", Roboto, -apple-system, sans-serif;
+    margin: 0;
+}
+
+/* ---------------- App Shell Layout ---------------- */
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.app-sidebar {
+    width: var(--sidebar-width);
+    background: #1a1c2e;
+    color: #cfd2e3;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1030;
+    transition: transform 0.25s ease;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-brand i {
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 12px 0;
+    overflow-y: auto;
+}
+
+.sidebar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 22px;
+    color: #cfd2e3;
+    font-size: 0.94rem;
+    border-left: 3px solid transparent;
+    transition: all 0.15s ease;
+}
+
+.sidebar-nav .nav-link:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+}
+
+.sidebar-nav .nav-link.active {
+    background: rgba(67, 97, 238, 0.15);
+    border-left-color: var(--primary);
+    color: #fff;
+}
+
+.sidebar-footer {
+    padding: 14px 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.app-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app-navbar {
+    height: var(--navbar-height);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.app-main {
+    flex: 1;
+}
+
+@media (max-width: 991px) {
+    .app-sidebar {
+        transform: translateX(-100%);
+    }
+    .app-sidebar.show {
+        transform: translateX(0);
+    }
+    .app-content {
+        margin-left: 0;
+    }
+}
+
+/* ---------------- Flash Messages ---------------- */
+.flash-container {
+    margin-bottom: 16px;
+}
+.flash-container .alert i {
+    margin-right: 8px;
+}
+
+/* ---------------- Auth Pages ---------------- */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+    padding: 20px;
+}
+
+.auth-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+}
+
+.auth-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+/* ---------------- Stat Cards (Dashboard) ---------------- */
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+.stat-icon {
+    font-size: 2.2rem;
+}
+
+.stat-value {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #1a1c2e;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.bg-primary-soft { background: linear-gradient(135deg, #fff, #eef1ff); }
+.bg-success-soft { background: linear-gradient(135deg, #fff, #eafaf1); }
+.bg-danger-soft   { background: linear-gradient(135deg, #fff, #fdeeee); }
+.bg-info-soft     { background: linear-gradient(135deg, #fff, #eaf6fb); }
+
+/* ---------------- Cards ---------------- */
+.card {
+    border: none;
+    border-radius: 14px;
+}
+.card-header {
+    background: #fff;
+    border-bottom: 1px solid #eef0f5;
+    font-weight: 600;
+    border-radius: 14px 14px 0 0 !important;
+    padding: 16px 20px;
+}
+.table thead th {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #6c757d;
+    border-top: none;
+}
+
+/* ---------------- Webcam / Capture UI ---------------- */
+.webcam-frame {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 4 / 3;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.webcam-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1); /* mirror, feels natural for a front camera */
+}
+
+.webcam-frame canvas#overlayCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.overlay-msg {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+/* ---------------- Error Pages ---------------- */
+.error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    gap: 10px;
+}
+.error-code {
+    font-size: 6rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0;
+}
+.error-message {
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+/* ---------------- Recognition Log List ---------------- */
+#recognitionLog .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
